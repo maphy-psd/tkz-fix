@@ -16,18 +16,30 @@
 % \fi
 %
 % \iffalse
-%<package>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<package>\ProvidesPackage{tkz-fix}
-%<package> [2013/11/09 v0.10 fix tkz-packages]
+%<tkz-fix>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<tkz-fix>\ProvidesPackage{tkz-fix}
+%<tkz-fix> [2013/11/09 v0.10 fix tkz-packages]
+%<tkz-fix>\makeatletter
+%<tkz-fix>\def\tkzDefOrthLine{\pgfutil@ifnextchar[{\tkz@DefOrthLine}{%
+%<tkz-fix>                                         \tkz@DefOrthLine[1]}} 
+%<tkz-fix> \def\tkz@DefOrthLine[#1](#2,#3){% 
+%<tkz-fix>\begingroup
+%<tkz-fix>\begin{pgfinterruptboundingbox}
+%<tkz-fix>   \tkzVecKOrth(#2,#3){tkz@OLtmp}
+%<tkz-fix>   \tkz@VecKCoLinear[#1](#2,tkz@OLtmp,\tkz@through){tkzPointResult} 
+%<tkz-fix>\end{pgfinterruptboundingbox}
+%<tkz-fix>\endgroup
+%<tkz-fix>} 
+%<tkz-fix>\makeatother
 %
 %<*driver>
 \documentclass{ltxdoc}
-\usepackage{hpackagei}
+\usepackage{tkz-fix}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
 \begin{document}
-\DocInput{hpackagei.dtx}
+\DocInput{tkz-fix.dtx}
 \end{document}
 %</driver>
 % \fi
@@ -51,16 +63,16 @@
 % Right brace \} Tilde \~}
 %
 %
-% \changes{v1.0}{hYYYY i/hMM i/hDDi}{Initial version}
+% \changes{v0.1}{2013/11/09}{First alpha initial version}
 %
-% \GetFileInfo{hpackagei.sty}
+% \GetFileInfo{tkz-fix.sty}
 %
-% \DoNotIndex{hlist of control sequencesi}
+% \DoNotIndex{}
 %
-% \title{The \textsf{hpackagei} package\thanks{This document
-% corresponds to \textsf{hpackagei}~\fileversion,
+% \title{The \textsf{tkz-fix} package\thanks{This document
+% corresponds to \textsf{tkz-fix}~\fileversion,
 % dated \filedate.}}
-% \author{hyour namei \\ \texttt{hyour e-mail addressi}}
+% \author{Marcel Pietschmann \\ \texttt{psd.phi@gmail.com}}
 %
 % \maketitle
 %
