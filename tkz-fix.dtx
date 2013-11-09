@@ -16,21 +16,6 @@
 % \fi
 %
 % \iffalse
-%<tkz-fix>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<tkz-fix>\ProvidesPackage{tkz-fix}
-%<tkz-fix> [2013/11/09 v0.10 fix tkz-packages]
-%<tkz-fix>\makeatletter
-%<tkz-fix>\def\tkzDefOrthLine{\pgfutil@ifnextchar[{\tkz@DefOrthLine}{%
-%<tkz-fix>                                         \tkz@DefOrthLine[1]}} 
-%<tkz-fix> \def\tkz@DefOrthLine[#1](#2,#3){% 
-%<tkz-fix>\begingroup
-%<tkz-fix>\begin{pgfinterruptboundingbox}
-%<tkz-fix>   \tkzVecKOrth(#2,#3){tkz@OLtmp}
-%<tkz-fix>   \tkz@VecKCoLinear[#1](#2,tkz@OLtmp,\tkz@through){tkzPointResult} 
-%<tkz-fix>\end{pgfinterruptboundingbox}
-%<tkz-fix>\endgroup
-%<tkz-fix>} 
-%<tkz-fix>\makeatother
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -98,15 +83,16 @@
 %
 % \begin{macro}{\YOURMACRO}
 % Put explanation of |\YOURMACRO|’s implementation here.
+Ignore one path in bounding box calculation
 % \begin{macrocode}
-\newcommand{\YOURMACRO}{}
+%\newcommand{\YOURMACRO}{}
 % \end{macrocode}
 % \end{macro}
 %
 % \begin{environment}{YOURENV}
 % Put explanation of |YOURENV|’s implementation here.
 % \begin{macrocode}
-\newenvironment{YOURENV}{}{}
+%\newenvironment{YOURENV}{}{}
 % \end{macrocode}
 % \end{environment}
 %
