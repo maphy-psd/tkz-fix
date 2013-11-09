@@ -1,0 +1,72 @@
+%%
+%% Copyright (C) 2013 by Marcel Pietschmann
+%%
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.3c of this license or (at your option) any later
+%% version. The latest version of this license is in:
+%%
+%% http://www.latex-project.org/lppl.txt
+%%
+%% and version 1.2 or later is part of all distributions of
+%% LaTeX version 1999/12/01 or later.
+%%
+
+\input docstrip.tex
+\keepsilent
+\usedir{tex/latex/tkz-fix}
+
+\preamble
+This is a generated file.
+
+Copyright (C) 2013 by Marcel Pietschmann
+
+This file may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either
+version 13c of this license or (at your option) any later
+version. The latest version of this license is in:
+
+http://www.latex-project.org/lppl.txt
+
+and version 1.3c or later is part of all distributions of
+LaTeX version 1999/12/01 or later.
+\endpreamble
+
+
+
+% gitinfox.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gitinfox}[2013/04/20 v0.70 eXtended git revision information]
+
+%%%%\tkzLabelLine[pos=0.5,above](AA,AB){$v$}
+
+%%%%% \tkzDefLine[orthogonal=through *](*,*)
+\makeatletter
+\def\tkzDefOrthLine{\pgfutil@ifnextchar[{\tkz@DefOrthLine}{%
+                                         \tkz@DefOrthLine[1]}} 
+ \def\tkz@DefOrthLine[#1](#2,#3){% 
+\begingroup
+\begin{pgfinterruptboundingbox}
+   \tkzVecKOrth(#2,#3){tkz@OLtmp}
+   \tkz@VecKCoLinear[#1](#2,tkz@OLtmp,\tkz@through){tkzPointResult} 
+\end{pgfinterruptboundingbox}
+\endgroup
+} 
+\makeatother
+
+
+%%%%% \tkzInterLC[R]
+\makeatletter
+\def\tkz@Projection(#1,#2)(#3)#4{%
+\begingroup 
+  \pgfpointdiff{\pgfpointanchor{#1}{center}}%
+               {\pgfpointanchor{#2}{center}}%
+  \tkz@ax =\pgf@y%
+  \tkz@ay =\pgf@x%
+  \begin{pgfinterruptboundingbox}
+  \path[coordinate](#3)--++(-\tkz@ax,\tkz@ay) coordinate (tkz@point);
+  \end{pgfinterruptboundingbox}
+  \tkz@InterLL(#1,#2)(#3,tkz@point){#4}% définit tkzPointResult 
+\endgroup
+}
+\makeatother
