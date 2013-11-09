@@ -23,22 +23,12 @@ tkz-fix
 This packages fix some problems with the bounding box calculation from the tkz-euclide.
 -----------------
 %</readme>
+%
+%
 %<package>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<package>\ProvidesPackage{tkz-fix}
 %<package> [2013/11/09 v0.10 fix tkz-packages]
 %
-%<package>\makeatletter
-%<package>\def\tkzDefOrthLine{\pgfutil@ifnextchar[{\tkz@DefOrthLine}{%
-%<package>                                         \tkz@DefOrthLine[1]}} 
-%<package> \def\tkz@DefOrthLine[#1](#2,#3){% 
-%<package>\begingroup
-%<package>\begin{pgfinterruptboundingbox}
-%<package>   \tkzVecKOrth(#2,#3){tkz@OLtmp}
-%<package>   \tkz@VecKCoLinear[#1](#2,tkz@OLtmp,\tkz@through){tkzPointResult} 
-%<package>\end{pgfinterruptboundingbox}
-%<package>\endgroup
-%<package>} 
-%<package>\makeatother
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -46,6 +36,7 @@ This packages fix some problems with the bounding box calculation from the tkz-e
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
+%\OnlyDescription
 \begin{document}
 \DocInput{tkz-fix.dtx}
 \end{document}
